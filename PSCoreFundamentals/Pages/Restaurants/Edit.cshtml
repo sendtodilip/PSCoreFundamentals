@@ -1,0 +1,28 @@
+﻿@page "{restaurantId:int?}"
+@model PSCoreFundamentals.Pages.Restaurants.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit @Model.restaurant.Name</h2>
+<form method="post">
+    <input type="hidden" asp-for="restaurant.Id" />
+    <div class="form-group">
+        <label asp-for="restaurant.Name"></label>
+        <input asp-for="restaurant.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="restaurant.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurant.Location"></label>
+        <input asp-for="restaurant.Location" class="form-control" />
+        <span class="text-danger" asp-validation-for="restaurant.Location"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurant.Cusine"></label>
+        <select asp-for="restaurant.Cusine" asp-items="Model.cuisine" class="form-control"></select>
+        <span class="text-danger" asp-validation-for="restaurant.Cusine"></span>
+    </div>
+    
+    <input type="submit" class="btn btn-primary" value="Edit" />
+</form>
+
