@@ -1,0 +1,23 @@
+﻿@using PSCoreFundamentals.Core
+@model Restaurant
+
+    <div class="panel panel-default col-md-3">
+        <div class="panel-heading">
+            <h3>@Model.Name</h3>
+        </div>
+        <div class="panel-body">
+            <span>Location: @Model.Location</span>
+            <span>Cuisine: @Model.Cusine</span>
+        </div>
+        <div class="panel-footer">
+            <a asp-page="./Details" asp-route-restaurantID="@Model.Id">
+                <i class="glyphicon glyphicon-zoom-in"></i>
+            </a>
+            <a asp-page="./Edit" asp-route-restaurantID="@Model.Id">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a asp-page="./Delete" asp-route-restaurantID="@Model.Id">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+    </div>

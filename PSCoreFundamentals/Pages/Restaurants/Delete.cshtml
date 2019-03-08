@@ -1,0 +1,22 @@
+﻿@page "{restaurantId:int}"
+@model PSCoreFundamentals.Pages.Restaurants.DeleteModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h2>Delete!</h2>
+    <div class="alert alert-danger">
+        Do you want to delete the Restaurant  @Model.restaurant.Name ?
+    </div>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a asp-page="List" class="btn btn-primary">Cancel </a>
+    </form>
+</body>
+</html>

@@ -17,26 +17,17 @@
         </div>
     </div>
 </form>
-<table class="table table-bordered">
 
+<div class="row">
     @foreach (var restaurant in Model.Restaurants)
     {
-        <tr>
-            <td>@restaurant.Name</td>
-            <td>@restaurant.Location</td>
-            <td>@restaurant.Cusine</td>
-            <td>
-                <a asp-page="./Details" asp-route-restaurantID="@restaurant.Id">
-                    <i class="glyphicon glyphicon-zoom-in"></i>
-                </a>
-                <a asp-page="./Edit" asp-route-restaurantID="@restaurant.Id">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-            </td>
-        </tr>
+        <partial name="_Summary" model="restaurant" />
     }
-</table>
-
+</div>
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
-
-@Model.Message
+@section footer
+    {
+    <div>
+        @Model.Message
+    </div>
+}
