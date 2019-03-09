@@ -41,6 +41,11 @@ namespace PSCoreFundamentals.Data
             return restaurant;
         }
 
+        public int GetCountOfRestaurants()
+        {
+            return restaurants.Count();
+        }
+
         public Restaurant GetRestaurantByID(int? id)
         {
             return restaurants.FirstOrDefault(r => r.Id == id);

@@ -33,6 +33,11 @@ namespace PSCoreFundamentals.Data
             return restaurant;
         }
 
+        public int GetCountOfRestaurants()
+        {
+            return coreFundaDbContext.Restaurants.Count();
+        }
+
         public Restaurant GetRestaurantByID(int? id)
         {
             return coreFundaDbContext.Restaurants.Find(id);
