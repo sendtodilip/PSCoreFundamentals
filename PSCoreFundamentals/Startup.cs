@@ -32,7 +32,8 @@ namespace PSCoreFundamentals
             });
 
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
-            
+            //services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -56,12 +57,26 @@ namespace PSCoreFundamentals
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
+            app.Use(SayHelloMiddleWare);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseMvc();
+        }
+
+        private RequestDelegate SayHelloMiddleWare(RequestDelegate arg)
+        {
+            return async ctrx =>
+            {
+                if (ctrx.Request.Path.StartsWithSegments("/hello"))
+                {
+                    await ctrx.Response.WriteAsync("Hello World");
+                }
+                else
+                {
+                    await arg(ctrx);
+                }
+            };
         }
     }
 }
